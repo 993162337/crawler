@@ -32,16 +32,14 @@ class Spider:
 		soup = BeautifulSoup(html.text, "html.parser", from_encoding="utf-8")
 
 		# 获取文章的title
-		title = soup.find_all(attrs=self.title_tag)
+		# title = soup.find_all(attrs=self.title_tag)
 		# 获取文章的content
 		content = soup.find_all(attrs=self.content_tag)
 		# 获取下一章的链接
-		link = soup.find_all(attrs=self.next_tag)
+		# link = soup.find_all(attrs=self.next_tag)
 
 		try:
-			result["title"] = title[0].string
 			result["content"] = content[0].get_text()
-			result["nextUrl"] = "http:" + link[0]["href"]
 			return result
 		except Exception as e:
 			result["error"] = "抓取中出现错误"
